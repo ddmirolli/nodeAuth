@@ -26,6 +26,11 @@ var UserSchema 	= mongoose.Schema({
 
 var User = module.exports = mongoose.models('User', UserSchema);
 
+module.exports.getUserByUsername = function(username, callback){
+	var query = {username: username};
+	User.findOne(query, callback);
+}
+
 module.exports.createUser	= function(newUser, callback){
 	newUser.save(callback);
 }
